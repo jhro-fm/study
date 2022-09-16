@@ -3,32 +3,7 @@ import paramiko
 import threading
 import configparser
 from scp import SCPClient
-'''
-The script supports remote command execution, file upload and file download;
-the host can be a target or multiple hosts;
-the single host uses the - H IP - U username - P password parameter;
-the multiple hosts use the format of the configuration file host.ini;
-the content of the host.ini file takes [host] as the first line,
-the second line uses the format of id = IP, username, passwd.
-Examples are as follows:
--H :host ip -H 192.168.11.11
--U :-U uername
--P :-P passwd
--f :config file host.ini配置如下
-[hosts]
-###hostname=ip,username,password
-1 = 192.168.152.131,root,123456
-2 = 192.168.152.132,autotest,123456
-3 = 192.168.152.133,root,123456
-4 = 192.168.152.134,root,123456
--c :command -c 'ls ~/'
--p :local filename -u ：remote path
--g :remote filename -d ：local path
-Usage :python3 remote_cmd.py -f /home/host.ini -c 'pwd' #remote hosts execute command , the list of host in the host.ini
-python3 remote_cmd.py -f /home/conf/host.ini -p test.py -u /home/autotest ##Upload files to remote host
-python3 remote_cmd.py -H '192.168.152.131' -U 'autotest' -P 'passwd' -g ~/Videos.tar -d /home/autotest/test/ ###get remote file download /home/autotest/tests
-python3 remote_cmd.py -H '192.168.152.131' -U 'autotest' -P 'passwd' -c 'pwd' ##remotehost execute command
-'''
+
 
 def getConnection(ip, username, password, command, port=22, local_filename="",
                   remotepath="", remote_filename="", localpath=""):
